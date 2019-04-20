@@ -3,13 +3,20 @@ import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 import { StaticQuery, graphql } from "gatsby"
 import { HelmetDatoCms } from 'gatsby-source-datocms'
-
+import BackgroundImage from 'gatsby-background-image'
 import '../styles/index.sass'
 
 const TemplateWrapper = ({ children }) => (
   <StaticQuery query={graphql`
     query LayoutQuery
     {
+      img1: file(relativePath: {eq: "GreyScheme.png"}) {
+        childImageSharp{
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
       datoCmsSite {
         globalSeo {
           siteName
@@ -39,13 +46,18 @@ const TemplateWrapper = ({ children }) => (
       }
     }
   `}
-  render={data => (
+  render={data => {
+    const imageData = data.img1.childImageSharp.fluid
+    return (
     <div className="container">
       <HelmetDatoCms
         favicon={data.datoCmsSite.faviconMetaTags}
         seo={data.datoCmsHome.seoMetaTags}
       />
-      <div className="container__sidebar">
+      <BackgroundImage 
+        className="container__sidebar" 
+        fluid={imageData}
+        >
         <div className="sidebar">
           <h6 className="sidebar__title">
             <Link to="/">{data.datoCmsSite.globalSeo.siteName}</Link>
@@ -58,7 +70,7 @@ const TemplateWrapper = ({ children }) => (
           />
           <ul className="sidebar__menu">
             <li>
-              <Link to="/">Home BITCH</Link>
+              <Link to="/">Projects</Link>
             </li>
             <li>
               <Link to="/about">About</Link>
@@ -76,7 +88,7 @@ const TemplateWrapper = ({ children }) => (
           </p>
           <div className="sidebar__copyright">{data.datoCmsHome.copyright}</div>
         </div>
-      </div>
+      </BackgroundImage>
       <div className="container__body">
         <div className="container__mobile-header">
           <div className="mobile-header">
@@ -91,7 +103,9 @@ const TemplateWrapper = ({ children }) => (
         {children}
       </div>
     </div>
-    )}
+    )
+    }
+    }
   />
 )
 
