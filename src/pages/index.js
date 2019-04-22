@@ -3,7 +3,6 @@ import { Link, graphql } from 'gatsby'
 import Masonry from 'react-masonry-component'
 import Img from 'gatsby-image'
 import Layout from "../components/layout"
-import Contact from "../components/contact"
 
 const IndexPage = ({ data }) => (
   <Layout>
@@ -26,8 +25,7 @@ const IndexPage = ({ data }) => (
         </div>
       ))}
     </Masonry>
-    <Contact />
-      <section id="three">
+      {/* <section id="three">
         <h2>Get In Touch</h2>
         <p>Accumsan pellentesque commodo blandit enim arcu non at amet id arcu magna. Accumsan orci faucibus id eu lorem semper nunc nisi lorem vulputate lorem neque lorem ipsum dolor.</p>
         <div className="row">
@@ -62,7 +60,7 @@ const IndexPage = ({ data }) => (
                 </ul>
             </div>
         </div>
-    </section>
+    </section> */}
   </Layout>
 )
 

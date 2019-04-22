@@ -1,0 +1,206 @@
+a[href^="tel"] {
+    color: #dadada; /* Inherit text color of parent element. */
+    text-decoration: none; /* Remove underline. */
+    /* Additional css `propery: value;` pairs here */
+  }
+
+.ContactGroup form p{
+    margin: 0;
+}
+
+.ContactGroup{    
+    background: linear-gradient(
+    rgba(0,0,0, .2),
+    rgba(0,0,0, .1));
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: center; */
+    /* flex-direction: column; */
+    /* height: 600px; */
+    /* padding: 20px; */
+
+    /* background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; */
+}
+
+.brand-title{
+    color: #dadada;
+    font-size: 28px;
+}
+    
+.contact-container{
+    height: 90%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+        
+.contact-section{
+    flex: 1;
+    /* margin-bottom: 20px; */
+    /* display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column; */
+    /* color: white; */
+    text-align: center;
+}
+
+.form{
+    flex: 1;
+}
+
+.contact-section p{
+    margin: 6px;
+}
+
+.contact-section .brand{
+    font-size: 20px;
+}
+
+.contact-section .phone, .email{
+    font-size: 14px;
+}
+           
+.ContactGroup form p{
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+            
+.ContactGoup p{
+    margin: 10px;
+}
+            
+.full button, input, textarea{
+    /* width: 100%; */
+    padding: 0.7em;
+    color: white;
+    /* color: #7F7F7F; */
+}
+            
+.full button{
+    width: 50%;
+    padding: 10px 0;
+    /* background: #4FC2AA; */
+    background: linear-gradient(104.74deg, rgb(75, 38, 255) 0%, rgb(176, 30, 255) 100%);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 1s;
+}
+
+.full button:hover {
+    /* background: #276F5B; */
+    box-shadow: 0 10px 20px rgba(0,0,0, .25);
+    transform: translateY(-3px);
+}
+               
+.alert{
+    text-align: center;
+    padding: 10px;
+    background: #79c879;
+    color: #fff;
+    margin-bottom: 10px;
+    display: none;
+}
+
+textarea, input{
+    color: #000;
+}
+
+.email{
+    color: #dadada;
+}
+
+@media (min-width: 768px){
+    .ContactGroup{
+        /* flex-direction: row; */
+        padding: 40px;
+        height: 400px;
+        /* padding: 50px 50px; */
+        /* margin: 50px 0; */
+    }
+        
+    .contact-container{
+        /* flex: 1; */
+        height: 100%;
+        /* align-items: center; */
+        /* align-content: space-between; */
+        flex-direction: row;
+        /* justify-content: space-between; */
+    }
+
+    .form{
+        flex: 2;
+    }
+
+    .text-field{
+        width: 45%;
+    }
+
+    .detail-wrapper{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        
+    }
+            
+    .contact-section{
+        margin: 0 20px;
+        flex: 1.3;
+    }
+
+    .contact-section p{
+        margin: 10px;
+    }
+
+    .contact-section .brand{
+        font-size: 30px;
+    }
+    
+    .contact-section .phone, .email{
+        font-size: 20px;
+    }
+               
+    form{
+        /* margin: 0 20px; */
+        /* height: 90%; */
+        display: flex;
+        flex-direction: column;
+        /* flex-basis: 40%; */
+    }
+
+    .ContactGroup form input, .ContactGroup form textarea{
+        width: 100%;
+        padding: 0.7em;
+    }
+
+    .ContactGroup form p{
+        margin: 10px 0;
+    }
+    
+    .full button, input, textarea{
+        /* width: 95%; */
+        font-size: 14px;
+    }
+    
+    .full button{
+        font-size: 18px;
+        /* width: 100%; */
+        border: 0;
+    }
+}
+
+@media(min-width: 1025px){
+    .ContactGroup{
+        margin-top: 50px;
+    }
+
+    /* .contact-container{
+        margin: 20px;
+    } */
+}
