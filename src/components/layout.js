@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 import { StaticQuery, graphql } from "gatsby"
 import { HelmetDatoCms } from 'gatsby-source-datocms'
+import Img from "gatsby-image"
 import BackgroundImage from 'gatsby-background-image'
 import Contact from "../components/Contact/Contact"
 import '../styles/index.sass'
@@ -12,6 +13,13 @@ const TemplateWrapper = ({ children }) => (
     query LayoutQuery
     {
       img1: file(relativePath: {eq: "Figma.png"}) {
+        childImageSharp{
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      profilepic: file(relativePath: {eq: "Colin_Editorial.jpg"}) {
         childImageSharp{
           fluid {
             ...GatsbyImageSharpFluid
@@ -49,6 +57,7 @@ const TemplateWrapper = ({ children }) => (
   `}
   render={data => {
     const imageData = data.img1.childImageSharp.fluid
+    const profPic = data.profilepic.childImageSharp.fluid
     return (
     <div className="container">
       <HelmetDatoCms
@@ -58,36 +67,43 @@ const TemplateWrapper = ({ children }) => (
       <BackgroundImage 
         className="container__sidebar" 
         fluid={imageData}
-        >
+      >
         <div className="sidebar">
-          <h6 className="sidebar__title">
-            <Link to="/">{data.datoCmsSite.globalSeo.siteName}</Link>
-          </h6>
-          <div
-            className="sidebar__intro"
-            dangerouslySetInnerHTML={{
-              __html: data.datoCmsHome.introTextNode.childMarkdownRemark.html,
-            }}
-          />
-          <ul className="sidebar__menu">
-            <li>
-              <Link to="/">Projects</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-          </ul>
-          <p className="sidebar__social">
-            {data.allDatoCmsSocialProfile.edges.map(({ node: profile }) => (
-              <a
-                key={profile.profileType}
-                href={profile.url}
-                target="blank"
-                className={`social social--${profile.profileType.toLowerCase()}`}
-              > </a>
-            ))}
-          </p>
-          <div className="sidebar__copyright">{data.datoCmsHome.copyright}</div>
+          <div className="sidebar__header">
+            <h6 className="sidebar__title">
+              <Link to="/">{data.datoCmsSite.globalSeo.siteName}</Link>
+            </h6>
+            <div>
+              <Img fluid = {profPic} className="profPic"/>
+            </div>
+            <div
+              className="sidebar__intro"
+              dangerouslySetInnerHTML={{
+                __html: data.datoCmsHome.introTextNode.childMarkdownRemark.html,
+              }}
+            />
+            <ul className="sidebar__menu">
+              <li>
+                <Link to="/">Projects</Link>
+              </li>
+              <li>
+                <Link to="/about">About</Link>
+              </li>
+            </ul>
+          </div>
+          <div className="sidebar__footer">
+            <p className="sidebar__social">
+              {data.allDatoCmsSocialProfile.edges.map(({ node: profile }) => (
+                <a
+                  key={profile.profileType}
+                  href={profile.url}
+                  target="blank"
+                  className={`social social--${profile.profileType.toLowerCase()}`}
+                > </a>
+              ))}
+            </p>
+            <div className="sidebar__copyright">{data.datoCmsHome.copyright}</div>
+          </div>
         </div>
       </BackgroundImage>
       <div className="container__body">
