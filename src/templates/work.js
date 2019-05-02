@@ -13,10 +13,21 @@ export default ({ data }) => (
         <h1 className="sheet__title">{data.datoCmsWork.title}</h1>
         <p className="sheet__lead">{data.datoCmsWork.excerpt}</p>
         <div className="sheet__slider">
-          <Slider infinite={true} slidesToShow={2} arrows>
-            {data.datoCmsWork.gallery.map(({ fluid }) => (
-              <img alt={data.datoCmsWork.title} key={fluid.src} src={fluid.src} />
-            ))}
+          <Slider 
+            infinite={true} 
+            // centerMode={true}
+            // dots={true} 
+            slidesToShow={2} 
+            slidesToScroll={1} 
+            arrows
+          >
+            {data.datoCmsWork.gallery.map(({ fluid }) => {
+              return(
+                <div key={fluid.src} className="slick-border">
+                  <img alt={data.datoCmsWork.title} src={fluid.src} />
+                </div>
+              )
+            })}
           </Slider>
         </div>
         <div
