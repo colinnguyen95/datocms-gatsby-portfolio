@@ -1,15 +1,18 @@
 @media screen and (max-width: 899px)
+  // .container
+  //   display: flex
+
   .container__sidebar
     box-sizing: border-box
-    width: 200px
+    width: 100%
     height: 100%
     top: 0
     right: 0
     bottom: 0
     left: 0
     z-index: 2
-    transform: translate3d(-200px, 0, 0)
-    transition: transform 0.2s ease-in-out
+    // transform: translate3d(-200px, 0, 0)
+    // transition: transform 0.2s ease-in-out
     padding: 20px
     // background-color: $light-bg-color
 
@@ -17,12 +20,22 @@
       transform: translate3d(0px, 0, 0);
 
   .container__body
+    // margin-top: 50px
     transform: translate3d(0px, 0, 0)
     transition: transform 0.2s ease-in-out
     background-color: $body-color
 
     .container.is-open &
       transform: translate3d(200px, 0, 0)
+
+  .project__header
+    font-size: 24px
+    text-transform: uppercase
+    font-weight: bold
+    text-decoration: none
+    color: $name-logo
+    margin: 25px 20px
+
 
 @media screen and (min-width: 900px)
   .container
@@ -55,6 +68,9 @@
   .container__body
     flex: 1
     margin-left: 30%
+
+  .project__header
+    display: none
 
   // .container__body--white
   //   background-color: white

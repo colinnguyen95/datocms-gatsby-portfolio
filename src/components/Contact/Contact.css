@@ -1,14 +1,14 @@
 a[href^="tel"] {
     color: #dadada; /* Inherit text color of parent element. */
     text-decoration: none; /* Remove underline. */
-    /* Additional css `propery: value;` pairs here */
   }
 
 .ContactGroup form p{
     margin: 0;
 }
 
-.ContactGroup{    
+.ContactGroup{  
+    box-sizing: border-box;  
     background: linear-gradient(
     rgba(0,0,0, .2),
     rgba(0,0,0, .1));
@@ -17,7 +17,7 @@ a[href^="tel"] {
     /* justify-content: center; */
     /* flex-direction: column; */
     /* height: 600px; */
-    /* padding: 20px; */
+    padding: 20px;
 
     /* background-size: cover;
     background-position: center;
@@ -113,7 +113,13 @@ textarea, input{
 }
 
 .email{
-    color: #dadada;
+    color: #dadada; 
+}
+
+.descr{
+    color: #dadada; 
+    font-size: 22px;
+    margin-bottom: 24px !important;
 }
 
 @media (min-width: 768px){

@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "author": "Stefano Verna <s.verna@datocms.com>",
   "dependencies": {
+    "babel-plugin-styled-components": "^1.10.0",
     "dotenv": "^7.0.0",
     "gatsby": "^2.3.23",
     "gatsby-background-image": "^0.3.5",
@@ -11,6 +12,7 @@
     "gatsby-plugin-react-helmet": "^3.0.12",
     "gatsby-plugin-sass": "^2.0.11",
     "gatsby-plugin-sharp": "^2.0.35",
+    "gatsby-plugin-styled-components": "^3.0.7",
     "gatsby-source-datocms": "2.1.2",
     "gatsby-source-filesystem": "^2.0.29",
     "gatsby-transformer-remark": "^2.3.8",
@@ -21,7 +23,8 @@
     "react-helmet": "^5.2.0",
     "react-masonry-component": "^6.2.1",
     "react-slick": "^0.23.2",
-    "slick-carousel": "^1.8.1"
+    "slick-carousel": "^1.8.1",
+    "styled-components": "^4.2.0"
   },
   "keywords": [
     "gatsby"

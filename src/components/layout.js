@@ -5,6 +5,7 @@ import { StaticQuery, graphql } from "gatsby"
 import { HelmetDatoCms } from 'gatsby-source-datocms'
 import Img from "gatsby-image"
 import BackgroundImage from 'gatsby-background-image'
+import BurgerMenu from "../components/BurgerMenu/BurgerMenu"
 import Contact from "../components/Contact/Contact"
 import '../styles/index.sass'
 
@@ -70,9 +71,11 @@ const TemplateWrapper = ({ children }) => (
       >
         <div className="sidebar">
           <div className="sidebar__header">
+            <BurgerMenu />
             <h6 className="sidebar__title">
               <Link to="/">{data.datoCmsSite.globalSeo.siteName}</Link>
             </h6>
+            
             <div>
               <Img fluid = {profPic} className="profPic"/>
             </div>
@@ -107,7 +110,7 @@ const TemplateWrapper = ({ children }) => (
         </div>
       </BackgroundImage>
       <div className="container__body">
-        <div className="container__mobile-header">
+        {/* <div className="container__mobile-header">
           <div className="mobile-header">
             <div className="mobile-header__menu">
               <Link to="#" data-js="toggleSidebar" />
@@ -116,7 +119,7 @@ const TemplateWrapper = ({ children }) => (
               <Link to="/">{data.datoCmsSite.globalSeo.siteName}</Link>
             </div>
           </div>
-        </div>
+        </div> */}
         {children}
         <Contact />
       </div>

@@ -29,6 +29,7 @@ const Contact = () => (
             </form>
 
             <div className="contact-section">
+                <p className="descr">Looking forward to hearing from you!</p>
                 <p className="phone"><a href="tel:408-XXX-XXXX">Phone: (408) XXX - XXXX</a></p>
                 <p className="email">nguyencolinXXgmail.com</p>
                 <div className="alert">Your message has been sent</div>
