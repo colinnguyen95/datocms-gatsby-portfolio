@@ -79,7 +79,7 @@ const Layout = ({ children, data }) => {
                 </h6>
                 
                 <div>
-                  <Img fluid = {profPic} className="profPic"/>
+                  <Img fluid = {profPic} className="profPic" />
                 </div>
                 <div
                   className="sidebar__intro"
