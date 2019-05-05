@@ -21,21 +21,41 @@ const getBackground = style('mode', {
   dark: '#212C4F'
 });
 
+const getCaption = style('mode', {
+  light: '#EFF3F5',
+  dark: '#0A0F2D'
+});
+
 const getForeground = style('mode', {
-  light: '#111',
+  light: 'rgba(0,0,0,.84)',
   dark: '#EEE'
 });
 
 const GlobalStyle = createGlobalStyle`
-body {
-  background-color: ${getBackground};
-  color: ${getForeground};
-}
+  body {
+    background-color: ${getBackground};
+    color: ${getForeground};
+  }
+
+  a[href^="tel"] {
+      color: ${getForeground};
+      text-decoration: none; /* Remove underline. */
+  }
+
+  .card__caption, .card__caption a{
+    background-color: ${getCaption};
+    color: ${getForeground};
+  }
+
+  .slick-border{
+    border: 5px solid ${getBackground};
+  }
 `;
 
 const Layout = ({ children, data }) => {
   const theme = useTheme();
-  const imageData = data.img1.childImageSharp.fluid
+  const darkImg = data.img1.childImageSharp.fluid
+  const lightImg = data.img2.childImageSharp.fluid
   const profPic = data.profilepic.childImageSharp.fluid
   return (
     <ThemeProvider theme={theme}>
@@ -47,8 +67,9 @@ const Layout = ({ children, data }) => {
             seo={data.datoCmsHome.seoMetaTags}
           />
           <BackgroundImage 
-            className="container__sidebar" 
-            fluid={imageData}
+            // className="container__sidebar" 
+            className={theme.mode === 'dark' ? "container__sidebar__dark"  : "container__sidebar__light" }
+            fluid={theme.mode === 'dark' ? darkImg : lightImg }
           >
             <div className="sidebar">
               <div className="sidebar__header">
@@ -105,7 +126,14 @@ export default props => (
   <StaticQuery query={graphql`
     query LayoutQuery
     {
-      img1: file(relativePath: {eq: "Figma.png"}) {
+      img1: file(relativePath: {eq: "DarkMode.png"}) {
+        childImageSharp{
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      img2: file(relativePath: {eq: "LightMode.png"}) {
         childImageSharp{
           fluid {
             ...GatsbyImageSharpFluid
