@@ -69,7 +69,7 @@ const Layout = ({ children, data }) => {
           <BackgroundImage 
             // className="container__sidebar" 
             className={theme.mode === 'dark' ? "container__sidebar__dark"  : "container__sidebar__light" }
-            fluid={theme.mode === 'dark' ? darkImg : lightImg }
+            fluid={theme.mode === 'light' ? lightImg : darkImg }
           >
             <div className="sidebar">
               <div className="sidebar__header">
