@@ -1,5 +1,4 @@
 import React from 'react'
-// import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 import { StaticQuery, graphql } from "gatsby"
 import { HelmetDatoCms } from 'gatsby-source-datocms'
@@ -12,9 +11,6 @@ import ToggleMode from './ToggleMode'
 import '../styles/index.sass'
 import { ThemeProvider, createGlobalStyle } from 'styled-components'
 import style from 'styled-theming';
-// const imageData = data.img1.childImageSharp.fluid
-// const profPic = data.profilepic.childImageSharp.fluid
-// const [theme, setTheme ] = useState({ mode: 'light' });
 
 const getBackground = style('mode', {
   light: '#EEE',
@@ -24,6 +20,11 @@ const getBackground = style('mode', {
 const getCaption = style('mode', {
   light: '#EFF3F5',
   dark: '#0A0F2D'
+});
+
+const getContact = style('mode', {
+  light: 'rgb(122, 65, 246)',
+  dark: '#EEE'
 });
 
 const getForeground = style('mode', {
@@ -38,7 +39,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   a[href^="tel"] {
-      color: ${getForeground};
+      color: ${getContact};
       text-decoration: none; /* Remove underline. */
   }
 
@@ -49,6 +50,10 @@ const GlobalStyle = createGlobalStyle`
 
   .slick-border{
     border: 5px solid ${getBackground};
+  }
+
+  .ContactGroup{
+    color: ${getContact};
   }
 `;
 

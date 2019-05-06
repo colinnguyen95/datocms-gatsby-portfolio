@@ -5,7 +5,7 @@
 .ContactGroup{  
     box-sizing: border-box;  
     background: linear-gradient(
-    rgba(0,0,0, .2),
+    rgba(0,0,0, .1),
     rgba(0,0,0, .1));
     /* display: flex; */
     /* align-items: center; */
@@ -73,7 +73,7 @@
 .full button, input, textarea{
     /* width: 100%; */
     padding: 0.7em;
-    color: white;
+    /* color: white; */
     /* color: #7F7F7F; */
 }
             
@@ -103,9 +103,9 @@
     display: none;
 }
 
-textarea, input{
+/* textarea, input{
     color: #000;
-}
+} */
 
 /* .email{
     color: #dadada; 
@@ -186,6 +186,7 @@ textarea, input{
     
     .full button, input, textarea{
         /* width: 95%; */
+        background-color: #EEE;
         font-size: 14px;
     }
     
