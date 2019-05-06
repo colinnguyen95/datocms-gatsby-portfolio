@@ -1,0 +1,14 @@
+.arrow{
+    position: relative;
+    font-size: 30px;
+    text-align: center;
+    transform: rotate(-90deg);
+    color: rgba(238,238,238, 0.5);
+    animation: bouncearrow 2s infinite;
+}
+
+@keyframes bouncearrow{
+    0%{top: 0px; opacity: 0;}
+    50%{top: 20px; opacity: 0;}
+    100%{top: 0px;}
+}

@@ -8,6 +8,7 @@ import BurgerMenu from "../components/BurgerMenu/BurgerMenu"
 import Contact from "../components/Contact/Contact"
 import useTheme from './useTheme';
 import ToggleMode from './ToggleMode'
+// import Arrow from './Arrow'
 import '../styles/index.sass'
 import { ThemeProvider, createGlobalStyle } from 'styled-components'
 import style from 'styled-theming';
@@ -79,10 +80,13 @@ const Layout = ({ children, data }) => {
             <div className="sidebar">
               <div className="sidebar__header">
                 <BurgerMenu />
-                <h6 className="sidebar__title">
-                  <Link to="/">{data.datoCmsSite.globalSeo.siteName}</Link>
-                </h6>
-                
+                <div className="name__header">
+                  <h6 className="sidebar__title">
+                    <Link to="/">{data.datoCmsSite.globalSeo.siteName}</Link>
+                  </h6>
+                  <ToggleMode />
+                </div>
+                {/* <Arrow /> */}
                 <div>
                   <Img fluid = {profPic} className="profPic" />
                 </div>
@@ -100,7 +104,6 @@ const Layout = ({ children, data }) => {
                     <Link to="/about">About</Link>
                   </li>
                 </ul>
-                <ToggleMode />
               </div>
               <div className="sidebar__footer">
                 <p className="sidebar__social">
