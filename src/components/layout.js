@@ -11,6 +11,7 @@ import ToggleMode from './ToggleMode'
 import '../styles/index.sass'
 import { ThemeProvider, createGlobalStyle } from 'styled-components'
 import style from 'styled-theming';
+import './misc.css'
 
 const getBackground = style('mode', {
   light: '#EEE',
@@ -77,13 +78,13 @@ const Layout = ({ children, data }) => {
           />
           <BackgroundImage 
             className="container__sidebar"
-            fluid={ lightImg }
+            fluid={ theme.mode === 'light' ? darkImg : lightImg }
           >
           {
             theme.mode === 'light' 
             ? <Img 
                 fluid={lightImg}
-                className="container__sidebar"
+                className="container__sidebar night"
                 style={{
                   position: "absolute",
                   zIndex: -99
@@ -91,7 +92,7 @@ const Layout = ({ children, data }) => {
               /> 
             : <Img 
                 fluid={darkImg}
-                className="container__sidebar"
+                className="container__sidebar night"
                 style={{
                   position: "absolute",
                   zIndex: -99

@@ -1,14 +1,12 @@
 import React from 'react';
 import { ThemeConsumer } from 'styled-components';
-import Button from './Button';
 import './Arrow.css'
 
 export default function ToggleMode() {
   return (
     <ThemeConsumer>
       {theme => (
-        <Button className="toggle__mode"
-          // variant="primary"
+        <button className="toggle__mode"
           onClick={e =>
             theme.setTheme(
               theme.mode === 'dark'
@@ -21,7 +19,7 @@ export default function ToggleMode() {
           <div className="arrow">
             <span className="animate">&#10513;</span>
           </div>
-        </Button>
+        </button>
       )}
     </ThemeConsumer>
   );
