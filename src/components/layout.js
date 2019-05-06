@@ -67,6 +67,9 @@ const Layout = ({ children, data }) => {
   const darkImg = data.img1.childImageSharp.fluid
   const lightImg = data.img2.childImageSharp.fluid
   const profPic = data.profilepic.childImageSharp.fluid
+
+  // const darkImg2 = data.img3.childImageSharp.fluid
+  // const lightImg2 = data.img4.childImageSharp.fluid
   return (
     <ThemeProvider theme={theme}>
       <>
@@ -77,8 +80,8 @@ const Layout = ({ children, data }) => {
             seo={data.datoCmsHome.seoMetaTags}
           />
           <BackgroundImage 
-            // className="container__sidebar" 
-            className={theme.mode === 'dark' ? "container__sidebar__dark"  : "container__sidebar__light" }
+            className={theme.mode === 'light' ? "container__sidebar__light"  : "container__sidebar__dark" }
+            // fluid={ lightImg }
             fluid={theme.mode === 'light' ? lightImg : darkImg }
           >
             <div className="sidebar">
@@ -90,7 +93,6 @@ const Layout = ({ children, data }) => {
                   </h6>
                   <ToggleMode />
                 </div>
-                {/* <Arrow /> */}
                 <div>
                   <Img fluid = {profPic} className="profPic" />
                 </div>
@@ -124,6 +126,58 @@ const Layout = ({ children, data }) => {
               </div>
             </div>
           </BackgroundImage>
+          {/* <BackgroundImage 
+            className={theme.mode === 'dark' ? "container__sidebar__dark"  : "container__sidebar__light" }
+            fluid={ lightImg }
+            // fluid={theme.mode === 'light' ? lightImg : darkImg }
+          >
+          {
+            theme.mode === 'dark' 
+            ? <Img fluid={lightImg2}/> 
+            : <Img fluid={darkImg2}/>
+          }
+            <div className="sidebar">
+              <div className="sidebar__header">
+                <BurgerMenu />
+                <div className="name__header">
+                  <h6 className="sidebar__title">
+                    <Link to="/">{data.datoCmsSite.globalSeo.siteName}</Link>
+                  </h6>
+                  <ToggleMode />
+                </div>
+                <div>
+                  <Img fluid = {profPic} className="profPic" />
+                </div>
+                <div
+                  className="sidebar__intro"
+                  dangerouslySetInnerHTML={{
+                    __html: data.datoCmsHome.introTextNode.childMarkdownRemark.html,
+                  }}
+                />
+                <ul className="sidebar__menu">
+                  <li>
+                    <Link to="/">Projects</Link>
+                  </li>
+                  <li>
+                    <Link to="/about">About</Link>
+                  </li>
+                </ul>
+              </div>
+              <div className="sidebar__footer">
+                <p className="sidebar__social">
+                  {data.allDatoCmsSocialProfile.edges.map(({ node: profile }) => (
+                    <a
+                      key={profile.profileType}
+                      href={profile.url}
+                      target="blank"
+                      className={`social social--${profile.profileType.toLowerCase()}`}
+                    > </a>
+                  ))}
+                </p>
+                <div className="sidebar__copyright">{data.datoCmsHome.copyright}</div>
+              </div>
+            </div>
+          </BackgroundImage> */}
           <div className="container__body">
             {children}
             <Contact />
@@ -146,6 +200,20 @@ export default props => (
         }
       }
       img2: file(relativePath: {eq: "LightMode.png"}) {
+        childImageSharp{
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      img3: file(relativePath: {eq: "Dark2.png"}) {
+        childImageSharp{
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      img4: file(relativePath: {eq: "GreyScheme.png"}) {
         childImageSharp{
           fluid {
             ...GatsbyImageSharpFluid
