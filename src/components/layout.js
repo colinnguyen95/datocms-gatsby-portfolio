@@ -56,6 +56,10 @@ const GlobalStyle = createGlobalStyle`
   .ContactGroup{
     color: ${getContact};
   }
+
+  .project__header{
+    color: ${getContact};
+  }
 `;
 
 const Layout = ({ children, data }) => {

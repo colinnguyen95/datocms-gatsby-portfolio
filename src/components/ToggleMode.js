@@ -19,7 +19,7 @@ export default function ToggleMode() {
         >
           {theme.mode === 'dark' ? '🌚' : '🌞'}
           <div className="arrow">
-            <span className="animate">&#8674;</span>
+            <span className="animate">&#10513;</span>
           </div>
         </Button>
       )}
