@@ -79,7 +79,7 @@ const Layout = ({ children, data }) => {
             favicon={data.datoCmsSite.faviconMetaTags}
             seo={data.datoCmsHome.seoMetaTags}
           />
-          <BackgroundImage 
+          {/* <BackgroundImage 
             className={theme.mode === 'light' ? "container__sidebar__light"  : "container__sidebar__dark" }
             // fluid={ lightImg }
             fluid={theme.mode === 'light' ? lightImg : darkImg }
@@ -125,16 +125,36 @@ const Layout = ({ children, data }) => {
                 <div className="sidebar__copyright">{data.datoCmsHome.copyright}</div>
               </div>
             </div>
-          </BackgroundImage>
-          {/* <BackgroundImage 
-            className={theme.mode === 'dark' ? "container__sidebar__dark"  : "container__sidebar__light" }
+          </BackgroundImage> */}
+          <BackgroundImage 
+            className={theme.mode === 'light' ? "container__sidebar__dark"  : "container__sidebar__light" }
             fluid={ lightImg }
             // fluid={theme.mode === 'light' ? lightImg : darkImg }
           >
           {
-            theme.mode === 'dark' 
-            ? <Img fluid={lightImg2}/> 
-            : <Img fluid={darkImg2}/>
+            theme.mode === 'light' 
+            ? <Img 
+                fluid={lightImg}
+                style={{
+                  position: "absolute",
+                  left: 0,
+                  top: 0,
+                  width: "100%",
+                  height: "100vh",
+                  zIndex: -99
+                }}
+              /> 
+            : <Img 
+                fluid={darkImg}
+                style={{
+                  position: "absolute",
+                  left: 0,
+                  top: 0,
+                  width: "100%",
+                  height: "100vh",
+                  zIndex: -99
+                }}
+              />
           }
             <div className="sidebar">
               <div className="sidebar__header">
@@ -177,7 +197,7 @@ const Layout = ({ children, data }) => {
                 <div className="sidebar__copyright">{data.datoCmsHome.copyright}</div>
               </div>
             </div>
-          </BackgroundImage> */}
+          </BackgroundImage>
           <div className="container__body">
             {children}
             <Contact />
