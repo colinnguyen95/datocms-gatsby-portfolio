@@ -8,7 +8,6 @@ import BurgerMenu from "../components/BurgerMenu/BurgerMenu"
 import Contact from "../components/Contact/Contact"
 import useTheme from './useTheme';
 import ToggleMode from './ToggleMode'
-// import Arrow from './Arrow'
 import '../styles/index.sass'
 import { ThemeProvider, createGlobalStyle } from 'styled-components'
 import style from 'styled-theming';
@@ -67,9 +66,6 @@ const Layout = ({ children, data }) => {
   const darkImg = data.img1.childImageSharp.fluid
   const lightImg = data.img2.childImageSharp.fluid
   const profPic = data.profilepic.childImageSharp.fluid
-
-  // const darkImg2 = data.img3.childImageSharp.fluid
-  // const lightImg2 = data.img4.childImageSharp.fluid
   return (
     <ThemeProvider theme={theme}>
       <>
@@ -79,79 +75,25 @@ const Layout = ({ children, data }) => {
             favicon={data.datoCmsSite.faviconMetaTags}
             seo={data.datoCmsHome.seoMetaTags}
           />
-          {/* <BackgroundImage 
-            className={theme.mode === 'light' ? "container__sidebar__light"  : "container__sidebar__dark" }
-            // fluid={ lightImg }
-            fluid={theme.mode === 'light' ? lightImg : darkImg }
-          >
-            <div className="sidebar">
-              <div className="sidebar__header">
-                <BurgerMenu />
-                <div className="name__header">
-                  <h6 className="sidebar__title">
-                    <Link to="/">{data.datoCmsSite.globalSeo.siteName}</Link>
-                  </h6>
-                  <ToggleMode />
-                </div>
-                <div>
-                  <Img fluid = {profPic} className="profPic" />
-                </div>
-                <div
-                  className="sidebar__intro"
-                  dangerouslySetInnerHTML={{
-                    __html: data.datoCmsHome.introTextNode.childMarkdownRemark.html,
-                  }}
-                />
-                <ul className="sidebar__menu">
-                  <li>
-                    <Link to="/">Projects</Link>
-                  </li>
-                  <li>
-                    <Link to="/about">About</Link>
-                  </li>
-                </ul>
-              </div>
-              <div className="sidebar__footer">
-                <p className="sidebar__social">
-                  {data.allDatoCmsSocialProfile.edges.map(({ node: profile }) => (
-                    <a
-                      key={profile.profileType}
-                      href={profile.url}
-                      target="blank"
-                      className={`social social--${profile.profileType.toLowerCase()}`}
-                    > </a>
-                  ))}
-                </p>
-                <div className="sidebar__copyright">{data.datoCmsHome.copyright}</div>
-              </div>
-            </div>
-          </BackgroundImage> */}
           <BackgroundImage 
-            className={theme.mode === 'light' ? "container__sidebar__dark"  : "container__sidebar__light" }
+            className="container__sidebar"
             fluid={ lightImg }
-            // fluid={theme.mode === 'light' ? lightImg : darkImg }
           >
           {
             theme.mode === 'light' 
             ? <Img 
                 fluid={lightImg}
+                className="container__sidebar"
                 style={{
                   position: "absolute",
-                  left: 0,
-                  top: 0,
-                  width: "100%",
-                  height: "100vh",
                   zIndex: -99
                 }}
               /> 
             : <Img 
                 fluid={darkImg}
+                className="container__sidebar"
                 style={{
                   position: "absolute",
-                  left: 0,
-                  top: 0,
-                  width: "100%",
-                  height: "100vh",
                   zIndex: -99
                 }}
               />
@@ -214,28 +156,14 @@ export default props => (
     {
       img1: file(relativePath: {eq: "DarkMode.png"}) {
         childImageSharp{
-          fluid {
+          fluid (quality: 100){
             ...GatsbyImageSharpFluid
           }
         }
       }
       img2: file(relativePath: {eq: "LightMode.png"}) {
         childImageSharp{
-          fluid {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      img3: file(relativePath: {eq: "Dark2.png"}) {
-        childImageSharp{
-          fluid {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      img4: file(relativePath: {eq: "GreyScheme.png"}) {
-        childImageSharp{
-          fluid {
+          fluid (quality: 100){
             ...GatsbyImageSharpFluid
           }
         }
@@ -280,137 +208,3 @@ export default props => (
   />
 )
 
-// TemplateWrapper.propTypes = {
-//   children: PropTypes.object,
-// }
-
-// export default TemplateWrapper
-
-
-// const TemplateWrapper = ({ children }) => (
-//   <StaticQuery query={graphql`
-//     query LayoutQuery
-//     {
-//       img1: file(relativePath: {eq: "Figma.png"}) {
-//         childImageSharp{
-//           fluid {
-//             ...GatsbyImageSharpFluid
-//           }
-//         }
-//       }
-//       profilepic: file(relativePath: {eq: "Colin_Editorial.jpg"}) {
-//         childImageSharp{
-//           fluid {
-//             ...GatsbyImageSharpFluid
-//           }
-//         }
-//       }
-//       datoCmsSite {
-//         globalSeo {
-//           siteName
-//         }
-//         faviconMetaTags {
-//           ...GatsbyDatoCmsFaviconMetaTags
-//         }
-//       }
-//       datoCmsHome {
-//         seoMetaTags {
-//           ...GatsbyDatoCmsSeoMetaTags
-//         }
-//         introTextNode {
-//           childMarkdownRemark {
-//             html
-//           }
-//         }
-//         copyright
-//       }
-//       allDatoCmsSocialProfile(sort: { fields: [position], order: ASC }) {
-//         edges {
-//           node {
-//             profileType
-//             url
-//           }
-//         }
-//       }
-//     }
-//   `}
-//   render={data => {
-//     // const [theme, setTheme ] = useState({ mode: 'light' });
-//     const imageData = data.img1.childImageSharp.fluid
-//     const profPic = data.profilepic.childImageSharp.fluid
-//     return (
-//     <div className="container">
-//       <HelmetDatoCms
-//         favicon={data.datoCmsSite.faviconMetaTags}
-//         seo={data.datoCmsHome.seoMetaTags}
-//       />
-//       <BackgroundImage 
-//         className="container__sidebar" 
-//         fluid={imageData}
-//       >
-//         <div className="sidebar">
-//           <div className="sidebar__header">
-//             <BurgerMenu />
-//             <h6 className="sidebar__title">
-//               <Link to="/">{data.datoCmsSite.globalSeo.siteName}</Link>
-//             </h6>
-            
-//             <div>
-//               <Img fluid = {profPic} className="profPic"/>
-//             </div>
-//             <div
-//               className="sidebar__intro"
-//               dangerouslySetInnerHTML={{
-//                 __html: data.datoCmsHome.introTextNode.childMarkdownRemark.html,
-//               }}
-//             />
-//             <ul className="sidebar__menu">
-//               <li>
-//                 <Link to="/">Projects</Link>
-//               </li>
-//               <li>
-//                 <Link to="/about">About</Link>
-//               </li>
-//             </ul>
-//           </div>
-//           <div className="sidebar__footer">
-//             <p className="sidebar__social">
-//               {data.allDatoCmsSocialProfile.edges.map(({ node: profile }) => (
-//                 <a
-//                   key={profile.profileType}
-//                   href={profile.url}
-//                   target="blank"
-//                   className={`social social--${profile.profileType.toLowerCase()}`}
-//                 > </a>
-//               ))}
-//             </p>
-//             <div className="sidebar__copyright">{data.datoCmsHome.copyright}</div>
-//           </div>
-//         </div>
-//       </BackgroundImage>
-//       <div className="container__body">
-//         {/* <div className="container__mobile-header">
-//           <div className="mobile-header">
-//             <div className="mobile-header__menu">
-//               <Link to="#" data-js="toggleSidebar" />
-//             </div>
-//             <div className="mobile-header__logo">
-//               <Link to="/">{data.datoCmsSite.globalSeo.siteName}</Link>
-//             </div>
-//           </div>
-//         </div> */}
-//         {children}
-//         <Contact />
-//       </div>
-//     </div>
-//     )
-//     }
-//     }
-//   />
-// )
-
-// TemplateWrapper.propTypes = {
-//   children: PropTypes.object,
-// }
-
-// export default TemplateWrapper
