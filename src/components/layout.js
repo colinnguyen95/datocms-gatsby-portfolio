@@ -161,28 +161,28 @@ export default props => (
       img1: file(relativePath: {eq: "DarkMode.png"}) {
         childImageSharp{
           fluid (quality: 100){
-            ...GatsbyImageSharpFluid_noBase64
+            ...GatsbyImageSharpFluid
           }
         }
       }
       img2: file(relativePath: {eq: "LightMode.png"}) {
         childImageSharp{
           fluid (quality: 100){
-            ...GatsbyImageSharpFluid_noBase64
+            ...GatsbyImageSharpFluid
           }
         }
       }
       img3: file(relativePath: {eq: "LightMode.png"}) {
         childImageSharp{
           fluid (quality: 1){
-            ...GatsbyImageSharpFluid_noBase64
+            ...GatsbyImageSharpFluid
           }
         }
       }
       profilepic: file(relativePath: {eq: "Colin_Editorial.jpg"}) {
         childImageSharp{
           fluid {
-            ...GatsbyImageSharpFluid_noBase64
+            ...GatsbyImageSharpFluid
           }
         }
       }
