@@ -67,7 +67,7 @@ const Layout = ({ children, data }) => {
   const darkImg = data.img1.childImageSharp.fluid
   const lightImg = data.img2.childImageSharp.fluid
   // const placeHolderImg = data.img3.childImageSharp.fluid
-  const profPic = data.profilepic.childImageSharp.fluid
+  // const profPic = data.profilepic.childImageSharp.fluid
   let themeImg = theme.mode === 'light' ? lightImg : darkImg
   return (
     <ThemeProvider theme={theme}>
@@ -81,7 +81,6 @@ const Layout = ({ children, data }) => {
           <BackgroundImage
             className="container__sidebar"
             fluid={ themeImg }
-            // fluid={ theme.mode === 'light' ? darkImg : lightImg }
           >
           {/* {
             theme.mode === 'light' 
@@ -112,7 +111,7 @@ const Layout = ({ children, data }) => {
                   <ToggleMode />
                 </div>
                 <div>
-                  <Img fluid = {profPic} className="profPic" />
+                  <Img fluid = {data.datoCmsHome.hero.fluid} className="profPic" />
                 </div>
                 <div
                   className="sidebar__intro"
@@ -194,13 +193,18 @@ export default props => (
           ...GatsbyDatoCmsFaviconMetaTags
         }
       }
-      datoCmsHome {
+      datoCmsHome { 
         seoMetaTags {
           ...GatsbyDatoCmsSeoMetaTags
         }
         introTextNode {
           childMarkdownRemark {
             html
+          }
+        }
+        hero {
+          fluid(maxWidth: 600, imgixParams: { fm: "jpg", auto: "compress" }) {
+            ...GatsbyDatoCmsSizes
           }
         }
         copyright
