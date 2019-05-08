@@ -66,8 +66,9 @@ const Layout = ({ children, data }) => {
   const theme = useTheme();
   const darkImg = data.img1.childImageSharp.fluid
   const lightImg = data.img2.childImageSharp.fluid
-  const placeHolderImg = data.img3.childImageSharp.fluid
+  // const placeHolderImg = data.img3.childImageSharp.fluid
   const profPic = data.profilepic.childImageSharp.fluid
+  let themeImg = theme.mode === 'light' ? lightImg : darkImg
   return (
     <ThemeProvider theme={theme}>
       <>
@@ -79,10 +80,10 @@ const Layout = ({ children, data }) => {
           />
           <BackgroundImage
             className="container__sidebar"
-            fluid={ placeHolderImg }
+            fluid={ themeImg }
             // fluid={ theme.mode === 'light' ? darkImg : lightImg }
           >
-          {
+          {/* {
             theme.mode === 'light' 
             ? <Img
                 fluid={lightImg}
@@ -100,7 +101,7 @@ const Layout = ({ children, data }) => {
                   zIndex: -99
                 }}
               />
-          }
+          } */}
             <div className="sidebar">
               <div className="sidebar__header">
                 <BurgerMenu />
@@ -111,7 +112,7 @@ const Layout = ({ children, data }) => {
                   <ToggleMode />
                 </div>
                 <div>
-                  <BackgroundImage fluid = {profPic} className="profPic" ></BackgroundImage>
+                  <Img fluid = {profPic} className="profPic" />
                 </div>
                 <div
                   className="sidebar__intro"
