@@ -3,6 +3,7 @@ import { Link } from 'gatsby'
 import { StaticQuery, graphql } from "gatsby"
 import { HelmetDatoCms } from 'gatsby-source-datocms'
 import BackgroundImage from 'gatsby-background-image'
+import Img from "gatsby-image"
 import BurgerMenu from "../components/BurgerMenu/BurgerMenu"
 import Contact from "../components/Contact/Contact"
 import useTheme from './useTheme';
@@ -83,24 +84,22 @@ const Layout = ({ children, data }) => {
           >
           {
             theme.mode === 'light' 
-            ? <BackgroundImage
+            ? <Img
                 fluid={lightImg}
                 className="container__sidebar"
                 style={{
                   position: "absolute",
                   zIndex: -99
                 }}
-              >
-              </BackgroundImage>  
-            : <BackgroundImage
+              /> 
+            : <Img
                 fluid={darkImg}
                 className="container__sidebar"
                 style={{
                   position: "absolute",
                   zIndex: -99
                 }}
-                >
-              </BackgroundImage>
+              />
           }
             <div className="sidebar">
               <div className="sidebar__header">
