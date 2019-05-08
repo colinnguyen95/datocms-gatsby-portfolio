@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'gatsby'
 import { StaticQuery, graphql } from "gatsby"
 import { HelmetDatoCms } from 'gatsby-source-datocms'
-import Img from "gatsby-image"
 import BackgroundImage from 'gatsby-background-image'
 import BurgerMenu from "../components/BurgerMenu/BurgerMenu"
 import Contact from "../components/Contact/Contact"
@@ -66,6 +65,7 @@ const Layout = ({ children, data }) => {
   const theme = useTheme();
   const darkImg = data.img1.childImageSharp.fluid
   const lightImg = data.img2.childImageSharp.fluid
+  const placeHolderImg = data.img3.childImageSharp.fluid
   const profPic = data.profilepic.childImageSharp.fluid
   return (
     <ThemeProvider theme={theme}>
@@ -76,28 +76,31 @@ const Layout = ({ children, data }) => {
             favicon={data.datoCmsSite.faviconMetaTags}
             seo={data.datoCmsHome.seoMetaTags}
           />
-          <BackgroundImage 
+          <BackgroundImage
             className="container__sidebar"
-            fluid={ theme.mode === 'light' ? darkImg : lightImg }
+            fluid={ placeHolderImg }
+            // fluid={ theme.mode === 'light' ? darkImg : lightImg }
           >
           {
             theme.mode === 'light' 
-            ? <Img 
+            ? <BackgroundImage
                 fluid={lightImg}
-                className="container__sidebar night"
+                className="container__sidebar"
                 style={{
                   position: "absolute",
                   zIndex: -99
                 }}
-              /> 
-            : <Img 
+              >
+              </BackgroundImage>  
+            : <BackgroundImage
                 fluid={darkImg}
-                className="container__sidebar night"
+                className="container__sidebar"
                 style={{
                   position: "absolute",
                   zIndex: -99
                 }}
-              />
+                >
+              </BackgroundImage>
           }
             <div className="sidebar">
               <div className="sidebar__header">
@@ -109,7 +112,7 @@ const Layout = ({ children, data }) => {
                   <ToggleMode />
                 </div>
                 <div>
-                  <Img fluid = {profPic} className="profPic" />
+                  <BackgroundImage fluid = {profPic} className="profPic" ></BackgroundImage>
                 </div>
                 <div
                   className="sidebar__intro"
@@ -158,21 +161,28 @@ export default props => (
       img1: file(relativePath: {eq: "DarkMode.png"}) {
         childImageSharp{
           fluid (quality: 100){
-            ...GatsbyImageSharpFluid
+            ...GatsbyImageSharpFluid_noBase64
           }
         }
       }
       img2: file(relativePath: {eq: "LightMode.png"}) {
         childImageSharp{
           fluid (quality: 100){
-            ...GatsbyImageSharpFluid
+            ...GatsbyImageSharpFluid_noBase64
+          }
+        }
+      }
+      img3: file(relativePath: {eq: "LightMode.png"}) {
+        childImageSharp{
+          fluid (quality: 1){
+            ...GatsbyImageSharpFluid_noBase64
           }
         }
       }
       profilepic: file(relativePath: {eq: "Colin_Editorial.jpg"}) {
         childImageSharp{
           fluid {
-            ...GatsbyImageSharpFluid
+            ...GatsbyImageSharpFluid_noBase64
           }
         }
       }
