@@ -64,10 +64,8 @@ const GlobalStyle = createGlobalStyle`
 
 const Layout = ({ children, data }) => {
   const theme = useTheme();
-  const darkImg = data.img1.childImageSharp.fluid
-  const lightImg = data.img2.childImageSharp.fluid
-  // const placeHolderImg = data.img3.childImageSharp.fluid
-  // const profPic = data.profilepic.childImageSharp.fluid
+  const lightImg = data.datoCmsHome.lightMode.fluid
+  const darkImg = data.datoCmsHome.darkMode.fluid
   let themeImg = theme.mode === 'light' ? lightImg : darkImg
   return (
     <ThemeProvider theme={theme}>
@@ -111,7 +109,7 @@ const Layout = ({ children, data }) => {
                   <ToggleMode />
                 </div>
                 <div>
-                  <Img fluid = {data.datoCmsHome.hero.fluid} className="profPic" />
+                  <Img fluid={data.datoCmsHome.hero.fluid} className="profPic" />
                 </div>
                 <div
                   className="sidebar__intro"
@@ -122,6 +120,9 @@ const Layout = ({ children, data }) => {
                 <ul className="sidebar__menu">
                   <li>
                     <Link to="/">Projects</Link>
+                  </li>
+                  <li>
+                    <a href={data.datoCmsHome.resume.url} target="_blank" rel="noopener noreferrer">Resume</a>
                   </li>
                   <li>
                     <Link to="/about">About</Link>
@@ -157,34 +158,6 @@ export default props => (
   <StaticQuery query={graphql`
     query LayoutQuery
     {
-      img1: file(relativePath: {eq: "DarkMode.png"}) {
-        childImageSharp{
-          fluid (quality: 100){
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      img2: file(relativePath: {eq: "LightMode.png"}) {
-        childImageSharp{
-          fluid (quality: 100){
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      img3: file(relativePath: {eq: "LightMode.png"}) {
-        childImageSharp{
-          fluid (quality: 1){
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      profilepic: file(relativePath: {eq: "Colin_Editorial.jpg"}) {
-        childImageSharp{
-          fluid {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
       datoCmsSite {
         globalSeo {
           siteName
@@ -206,6 +179,19 @@ export default props => (
           fluid(maxWidth: 600, imgixParams: { fm: "jpg", auto: "compress" }) {
             ...GatsbyDatoCmsSizes
           }
+        }
+        lightMode {
+          fluid(maxWidth: 600, imgixParams: { fm: "png", auto: "compress" }) {
+            ...GatsbyDatoCmsSizes
+          }
+        }
+        darkMode {
+          fluid(maxWidth: 600, imgixParams: { fm: "png", auto: "compress" }) {
+            ...GatsbyDatoCmsSizes
+          }
+        }
+        resume {
+          url
         }
         copyright
       }
