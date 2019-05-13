@@ -1,37 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { StaticQuery, graphql } from "gatsby"
 import { Link } from "gatsby"; 
 import './BurgerMenu.css';
 
-class BurgerMenu extends React.Component {
-    constructor(props) {
-        super(props)
+const BurgerMenu = ({ data }) => {
+    const [isExpanded, setExpanded] = useState(false);
 
-        this.state = {
-            hasScrolled: false,
-            isExpanded: false
-        }
+    function handleToggle() {
+        setExpanded(!isExpanded);
     }
-
-    handleToggle(e){
-        e.preventDefault();
-        this.setState({
-            isExpanded: !this.state.isExpanded,
-            height: this.refs.inner.clientHeight
-        })
-    }
-
-    render() {
-        const {isExpanded} = this.state;
-        return(
+    return (
         <div className="nav-container">
-            <nav className={`site-nav ${isExpanded ? 'site-nav--open' : ""}`} ref="inner">
+            <nav className={`site-nav ${isExpanded ? 'site-nav--open' : ""}`}>
                 <ul>
-                    <li onClick={(e) => this.handleToggle(e)}>
+                    <li onClick={handleToggle}>
                         <Link to="/" activeClassName="active">
                             Project
                         </Link>
                     </li>
-                    <li onClick={(e) => this.handleToggle(e)}>
+                    <li onClick={handleToggle}>
+                        <a href={data.datoCmsHome.resume.url} target="_blank" rel="noopener noreferrer">
+                            Resume
+                        </a>
+                    </li>
+                    <li onClick={handleToggle}>
                         <Link to="/about" activeClassName="active">
                             About
                         </Link>
@@ -39,12 +31,25 @@ class BurgerMenu extends React.Component {
                 </ul>
             </nav>
             
-            <div className={`menu-toggle ${isExpanded ? 'open' : ""}`} onClick={(e) => this.handleToggle(e)}>
+            <div className={`menu-toggle ${isExpanded ? 'open' : ""}`} onClick={handleToggle}>
                 <div className="hamburger"></div>
             </div>
         </div>
-        )
-    }
-}
-
-export default BurgerMenu
+    )
+  }
+  
+  export default props => (
+    <StaticQuery query={graphql`
+      query BurgerQuery
+      {
+        datoCmsHome { 
+          resume {
+            url
+          }
+        }
+      }
+    `}
+    render={data => <BurgerMenu data={data} {...props} />}
+    />
+  )
+  

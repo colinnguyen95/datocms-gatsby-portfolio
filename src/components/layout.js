@@ -101,7 +101,6 @@ const Layout = ({ children, data }) => {
           } */}
             <div className="sidebar">
               <div className="sidebar__header">
-                <BurgerMenu />
                 <div className="name__header">
                   <h6 className="sidebar__title">
                     <Link to="/">{data.datoCmsSite.globalSeo.siteName}</Link>
@@ -117,17 +116,7 @@ const Layout = ({ children, data }) => {
                     __html: data.datoCmsHome.introTextNode.childMarkdownRemark.html,
                   }}
                 />
-                <ul className="sidebar__menu">
-                  <li>
-                    <Link to="/">Projects</Link>
-                  </li>
-                  <li>
-                    <a href={data.datoCmsHome.resume.url} target="_blank" rel="noopener noreferrer">Resume</a>
-                  </li>
-                  <li>
-                    <Link to="/about">About</Link>
-                  </li>
-                </ul>
+                <BurgerMenu />
               </div>
               <div className="sidebar__footer">
                 <p className="sidebar__social">
@@ -189,9 +178,6 @@ export default props => (
           fluid(maxWidth: 600, imgixParams: { fm: "png", auto: "compress" }) {
             ...GatsbyDatoCmsSizes
           }
-        }
-        resume {
-          url
         }
         copyright
       }
