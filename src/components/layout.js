@@ -170,12 +170,12 @@ export default props => (
           }
         }
         lightMode {
-          fluid(maxWidth: 600, imgixParams: { fm: "png", auto: "compress" }) {
+          fluid(maxWidth: 600, imgixParams: { fm: "jpg", auto: "compress", q: 100 }) {
             ...GatsbyDatoCmsSizes
           }
         }
         darkMode {
-          fluid(maxWidth: 600, imgixParams: { fm: "png", auto: "compress" }) {
+          fluid(maxWidth: 600, imgixParams: { fm: "jpg", auto: "compress", q: 100 }) {
             ...GatsbyDatoCmsSizes
           }
         }
