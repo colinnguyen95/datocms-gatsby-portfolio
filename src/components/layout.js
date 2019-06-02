@@ -60,6 +60,10 @@ const GlobalStyle = createGlobalStyle`
   .project__header{
     color: ${getContact};
   }
+
+  .slick-prev:before, .slick-next:before{
+    color: ${getForeground};
+  }
 `;
 
 const Layout = ({ children, data }) => {
