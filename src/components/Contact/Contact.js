@@ -8,7 +8,7 @@ const Contact = () => (
         </div>
         <div className="contact-container">
             <form name="contact" className="form" method="POST" netlify-honeypot="bot-field" data-netlify="true">
-                <input type="hidden" name="contact" value="contact" />
+                <input type="hidden" name="form-name" value="contact" />
                 <div className="detail-wrapper">
                     <p className="text-field text1">
                         <input type="text" name="name" placeholder="Name" id="name" required/>
@@ -17,9 +17,6 @@ const Contact = () => (
                         <input type="email" name="email" placeholder="Email" id="email" required/>
                     </p>
                 </div>
-                {/* <p>
-                    <input type="text" name="subject" placeholder="Subject" id="subject"/>
-                </p> */}
                 <p className="full">
                     <textarea name="message" rows="5" placeholder="Message" id="message"></textarea>
                 </p>
