@@ -8,7 +8,7 @@ const Contact = () => (
         </div>
         <div className="contact-container">
             <form name="contact_colin" className="form" method="POST" netlify-honeypot="bot-field" data-netlify="true">
-                <input type="hidden" name="form-name" value="contact" />
+                <input type="hidden" name="form-name" value="contact_colin" />
                 <div className="detail-wrapper">
                     <p className="text-field text1">
                         <input type="text" name="name" placeholder="Name" id="name" required/>
